@@ -117,6 +117,13 @@ window.addEventListener("resize", () => {
   //  path updated
   path.attr("d", line);
 
+  // circle
+  const lastValue = data[data.length - 1];
+
+  circle
+    .attr("cx", xScale(lastValue.date_parsed))
+    .attr("cy", yScale(lastValue.Close));
+
   //  axis updated
   d3.select(".x-axis")
     .attr("transform", `translate(0,${height - margin.bottom})`)
