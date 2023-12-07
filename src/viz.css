@@ -12,6 +12,7 @@
 .y-axis .domain {
   display: none;
 }
+
 .y-axis .tick line {
   stroke: #dfdfdf;
 }

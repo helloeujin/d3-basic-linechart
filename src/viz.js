@@ -46,7 +46,7 @@ let path, circle, x, y;
 ////////////////////////////  Load CSV  ////////////////////////////
 let data = [];
 
-d3.csv("/data/BTC-USD.csv")
+d3.csv("data/BTC-USD.csv")
   .then((raw_data) => {
     // data parsing
     data = raw_data.map((d) => {
