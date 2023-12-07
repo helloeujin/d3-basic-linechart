@@ -2,11 +2,14 @@
   "name": "d3-basic-tutorials",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://helloeugin.github.io/d3-basic-linechart/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "gh-pages": "^6.1.0",
