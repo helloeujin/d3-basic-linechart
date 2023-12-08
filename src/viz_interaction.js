@@ -99,3 +99,37 @@ d3.csv("data/BTC-USD.csv")
   .catch((error) => {
     console.error("Error loading CSV data: ", error);
   });
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////  Resize  //////////////////////////////
+window.addEventListener("resize", () => {
+  //  width, height updated
+  width = parseInt(d3.select("#svg-container").style("width"));
+  height = parseInt(d3.select("#svg-container").style("height"));
+
+  //  scale updated
+  xScale.range([margin.left, width - margin.right]);
+  yScale.range([height - margin.bottom, margin.top]);
+
+  //  line updated
+  line.x((d) => xScale(d.date_parsed)).y((d) => yScale(d.Close));
+
+  //  path updated
+  path.attr("d", line);
+
+  // circle
+  const lastValue = data[data.length - 1];
+
+  circle
+    .attr("cx", xScale(lastValue.date_parsed))
+    .attr("cy", yScale(lastValue.Close));
+
+  //  axis updated
+  d3.select(".x-axis")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(xAxis);
+
+  d3.select(".y-axis")
+    .attr("transform", `translate(${margin.left}, 0)`)
+    .call(yAxis);
+});
